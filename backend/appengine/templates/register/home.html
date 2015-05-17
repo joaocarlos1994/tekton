@@ -3,31 +3,26 @@
     {{ select_tab('REGISTER')}}
 {% endblock %}
 {% block body %}
+{% set erros = erros or None %}
+{% set user = erros or None %}
+
     <div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
+	<div class="row">
+	<div class="col-md-12 column">
+	<div class="well">
+	    <h3>Registro de Usuário</h3>
 			<form action="{{ save_path }}" method="post" role="form">
-                <div class="form-group">
-					 <label for="exampleInputEmail1">Nome</label>
-					 <input class="form-control" name="exampleInputNome" type="text" />
-				</div>
-				<div class="form-group">
-					 <label for="exampleInputEmail1">Sobre nome</label>
-					 <input class="form-control" name="exampleInputSobreNome" type="text" />
-				</div>
-				<div class="form-group">
-					 <label for="exampleInputEmail1">Endereço</label>
-					 <input class="form-control" name="exampleInputEdereco" type="text" />
-				</div>
-				<div class="form-group">
-					 <label for="exampleInputEmail1">Email</label>
-					 <input class="form-control" name="exampleInputEdereco" type="email" />
-				</div>
-				<div class="form-group">
-					 <label for="exampleInputPassword1">Password</label>
-					 <input class="form-control" name="exampleInputPassword" type="password" />
-				</div>
-				<button type="submit" class="btn btn-success">Confirma</button>
+                {{ form_input('Nome:', 'nome', user.nome, erros.nome) }}
+                {{ form_input('Sobre Nome:', 'sobreNome', user.sobreNome, erros.sobreNome) }}
+                {{ form_input('Endereco', 'endereco', user.endereco, erros.endereco) }}
+                {{ form_input('Email', 'email', user.email,erros.email) }}
+
+                <div class="form-group ">
+                    <label for="passwordInput" class="control-label">Senha </label>
+                    <input id="passwordInput" type="password" class="form-control" name="password" value="">
+                </div>
+
+                <button type="submit" class="btn btn-success">Salvar</button>
             </form>
 		</div>
 	</div>

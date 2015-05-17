@@ -1,12 +1,14 @@
 from config.template_middleware import TemplateResponse
 from gaecookie.decorator import no_csrf
-from __future__ import absolute_import, unicode_literals
+from gaeforms import base
+from gaeforms.base import Form
+from gaeforms.ndb.form import ModelForm
+
+'from __future__ import absolute_import, unicode_literals'
 from google.appengine.ext import ndb
 from gaepermission.decorator import login_not_required
 from gaegraph.model import Node
 from tekton import router
-
-__author__ = 'joao'
 
 @login_not_required
 @no_csrf
@@ -16,17 +18,23 @@ def index():
 
 class User(Node):
     nome = ndb.StringProperty(required=True)
-    sobreNome = ndb.StringProperty
-    endereco = ndb.StringProperty
-    email = ndb.StringProperty
-    password = ndb.StringProperty
+    sobreNome = ndb.StringProperty(required=True)
+    endereco = ndb.StringProperty(required=True)
+    email = ndb.StringProperty(required=True)
+    password = ndb.StringProperty(required=True)
+
+class UserForm(ModelForm):
+    _model_class = User
 
 @login_not_required
 @no_csrf
 def salvar(_resp, **propriedades):
-    user = User(nome = propriedades['exampleInputNome'],
-                sobreNome = propriedades['exampleInputSobreNome'],
-                endereco = propriedades['exampleInputEdereco'],
-                email = propriedades['exampleInputEdereco'],
-                password = propriedades['exampleInputPassword'])
-    user.put()
+    user_form = UserForm(**propriedades)
+    erros = user_form.validate()
+    if erros:
+        contexto = {'save_path': router.to_path(salvar), 'erros': erros, 'user': user_form}
+        return TemplateResponse(contexto, 'register/home.html')
+    else:
+        user = user_form.fill_model()
+        user.put()
+        _resp.write(propriedades)

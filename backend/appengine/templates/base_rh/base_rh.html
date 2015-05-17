@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+{% macro form_input(label,property,value,error_msg) %}
+    <div class="form-group {{ ' has-error' if error_msg }}">
+        <label for="{{ property }}Input"
+               class="control-label">{{ label }} </label>
+        <input id="{{ property }}Input" type="text" class="form-control" name="{{ property }}"
+               value="{{ value }}"/>
+        {% if error_msg %}<span class="help-block">{{ error_msg }}</span>{% endif %}
+    </div>
+{% endmacro %}
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -24,19 +33,19 @@
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-
+                    {% macro select_tab(select='') %}
 					<ul class="nav navbar-nav">
 
-						<li>
-							<a href="#">Vagas</a>
+						<li {{ 'class=active' if select == 'REGISTER'}}>
+							<a href="/ti_no_vale">TI no Vale</a>
 						</li>
 
-						<li>
-							<a href="#">Candidato</a>
+						<li {{ 'class=active' if select == 'CANDIDATO'}}>
+							<a href="/candidato">Candidato</a>
 						</li>
 
-                        <li>
-							<a href="#">Empresa</a>
+                        <li {{ 'class=active' if select == 'EMPRESA'}}>
+							<a href="/empresa">Empresa</a>
 						</li>
                         <!--
 
@@ -73,7 +82,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                    {% macro select_tab(select='') %}
+
 
 						<li {{ 'class=active' if select == 'REGISTER'}}>
 							<a href="/register">Cadastra-se</a>
