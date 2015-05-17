@@ -1,0 +1,35 @@
+{% extends 'base_rh/base_rh.html' %}
+{% block selecao %}
+    {{ select_tab('REGISTER')}}
+{% endblock %}
+{% block body %}
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<form action="{{ save_path }}" method="post" role="form">
+                <div class="form-group">
+					 <label for="exampleInputEmail1">Nome</label>
+					 <input class="form-control" name="exampleInputNome" type="text" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputEmail1">Sobre nome</label>
+					 <input class="form-control" name="exampleInputSobreNome" type="text" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputEmail1">Endereço</label>
+					 <input class="form-control" name="exampleInputEdereco" type="text" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputEmail1">Email</label>
+					 <input class="form-control" name="exampleInputEdereco" type="email" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputPassword1">Password</label>
+					 <input class="form-control" name="exampleInputPassword" type="password" />
+				</div>
+				<button type="submit" class="btn btn-success">Confirma</button>
+            </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

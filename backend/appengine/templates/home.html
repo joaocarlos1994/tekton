@@ -1,46 +1,96 @@
-{% extends 'base/base.html' %}
-{% block css %}
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-social.css"/>
-    <link rel="stylesheet" href="/static/font-awesome-4.2.0/css/font-awesome.min.css"/>
-{% endblock %}
+{% extends 'base_rh/base_rh.html'%}
 {% block body %}
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Tekton</h1>
-                <p>{% trans %}A Full-Stack project for Google App Engine{% endtrans %}</p>
-            </div>
-        </div>
-        <br/>
+<div class="container">
+    <div class="carousel slide" id="carousel-669115" >
+        <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#carousel-669115"></li>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="well">
-                    <h2>{% trans %}Create CRUD code on
-                        <a href="https://cloud.google.com/products/app-engine/">App Engine</a>{% endtrans %}
-                    </h2>
-                    <br/>
+            <li data-slide-to="1" data-target="#carousel-669115"></li>
 
-                    <p>
-                        <a href="/courses" class="btn btn-primary"></i>{% trans %} Check Courses App
-                            Out{% endtrans %} &raquo;</a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="well">
-                    <h2>{% trans %}Tekton is open source.{% endtrans %}</h2>
-                    <br/>
+            <li data-slide-to="2" data-target="#carousel-669115"></li>
+		</ol>
 
-                    <p>
-                        <a href="https://github.com/renzon/tekton-fullstack" class="btn btn-social btn-github"><i
-                                class="fa fa-github"></i>{% trans %}Check Git Hub Out{% endtrans %} &raquo;</a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-6 col-md-offset-3">
-                <iframe width="560" height="315" src="//www.youtube.com/embed/videoseries?list=PLA05yVJtRWYRGIeBxag8uT-3ftcMVT5oF" frameborder="0" allowfullscreen></iframe>
-            </div>
+		<div class="carousel-inner" align="center">
+		    <div class="item active">
+			    <img alt="" src="/static/img/social.jpg">
+				    <div class="carousel-caption">
+					    <h4>
+							CADASTRAR MEU CURRÍCULUM
+						</h4>
+						<p>
+							Envie seu currículo com mais comodidade para consulta das empresas de TI do Vale do Paraíba.
+						</p>
+					</div>
+			</div>
+
+			<div class="item" align="center">
+			    <img alt="" src="/static/img/ti_no_vale.JPG">
+				    <div class="carousel-caption">
+					    <h4 style="color: #333333">
+							Eventos
+						</h4>
+						<p style="color: #333333">
+							Acompanhe a agenda de alguns eventos de TI no vale.
+						</p>
+					</div>
+			</div>
+
+
+			<div class="item" align="center">
+                <img alt="" src="/static/img/estagio.jpg">
+						<div class="carousel-caption">
+							<h4 style="color: #FF6666">
+								Estágio
+							</h4>
+							<p style="color: #FF6666">
+								A procura de um estágio em sua área, cadastrar-se seu currículum em nosso site.
+							</p>
+						</div>
+			</div>
+
+            <a class="left carousel-control" href="#carousel-669115" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-669115" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
         </div>
     </div>
-{% endblock %}
+
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+			<h2>
+				Oportunidades
+			</h2>
+			<p>
+				<!-- Digitar texto relacionado a oportunidades -->
+			</p>
+			<p>
+				<a class="btn" href="#">Veja mais detalhes »</a>
+			</p>
+		</div>
+
+		<div class="col-md-4 column">
+			<h2>
+				Empresas
+			</h2>
+			<p>
+				Atuamos na seleção e administraçlão de mão-de-obra temporária,
+                efetiva e CLT, banco de dados de pessoas portadoras de necessidades especiais (P.N.E.),
+                treinamento e desenvolvimento, outplacement e organização de arquivos.
+			</p>
+			<p>
+				<a class="btn" href="#">Veja mais detalhes »</a>
+			</p>
+		</div>
+		<div class="col-md-4 column">
+			<h2>
+				Currículum Cadastrados
+			</h2>
+			<p>
+				Mostre no seu currículo que você é o profissional certo para a vaga que procura. A Análise de Currículo
+                orienta você a ter um currículo de destaque.
+			</p>
+			<p>
+				<a class="btn" href="#">Veja mais detalhes »</a>
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %} <!-- Fechando block body -->
