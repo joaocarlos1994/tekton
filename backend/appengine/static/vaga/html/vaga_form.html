@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+	<div class="col-md-12 column">
+	<div class="well">
+	    <h3>Cadastro de Vagas</h3>
+			<form action="/vagas/form/salvar" method="post" role="form">
+
+            <select name="empresa">
+                {% for e in lista_empresa %}
+                    <option value="{{ e.key.id() }}"> {{ e.nome }}</option>
+                {% endfor %}
+            </select>
+
+                    <div class="form-group ">
+        <label for="nomeInput" class="control-label">Nome: </label>
+        <input id="nomeInput" type="text" class="form-control" name="nome" value="">
+            </div>
+
+                    <div class="form-group ">
+        <label for="cnpjInput" class="control-label">Quantidade: </label>
+        <input id="cnpjInput" type="text" class="form-control" name="cnpj" value="">
+            </div>
+
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </form>
+		</div>
+	</div>
+</div>
+</div>

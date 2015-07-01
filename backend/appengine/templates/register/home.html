@@ -1,30 +1,70 @@
 {% extends 'base_rh/base_rh.html' %}
+{% block js %}
+    <script type="text/javascript" src="/static/angular/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/register/js/register.js"></script>
+    {# <script type="text/javascript" src="/static/register/js/register_api_mock.js.js"></script> #}
+
+    <script type="text/javascript">
+
+     var rest = angular.module('rest', []);
+        rest.factory('RegisterApi', function($http){
+            return {
+                salvar: function(register){
+                    return $http.post('{{ rest_new_path }}', register);
+                }
+            };
+        });
+
+        var registerApp = angular.module('registerApp', ['registerModulo']);
+        function RegisterController($scope){
+            $scope.registrar = {nome: '', sobreNome: '', endereco: '', email: ''}
+            $scope.mostrarFormFlag = false;
+            $scope.registerLista={{ user_lista | safe }};
+
+            $scope.mostrarOuEsconderForm = function(){
+                $scope.mostrarFormFlag = !$scope.mostrarFormFlag
+            }
+
+
+        }
+
+    </script>
+
+{% endblock %}
 {% block selecao %}
     {{ select_tab('REGISTER')}}
 {% endblock %}
 {% block body %}
-{% set erros = erros or None %}
-{% set user = erros or None %}
-
-    <div class="container">
+<div class="container">
 	<div class="row">
-	<div class="col-md-12 column">
+	<div class="col-md-12 column" ng-app="registerApp" ng-controller="RegisterController">
 	<div class="well">
 	    <h3>Registro de Usuário</h3>
-			<form action="{{ save_path }}" method="post" role="form">
-                {{ form_input('Nome:', 'nome', user.nome, erros.nome) }}
-                {{ form_input('Sobre Nome:', 'sobreNome', user.sobreNome, erros.sobreNome) }}
-                {{ form_input('Endereco', 'endereco', user.endereco, erros.endereco) }}
-                {{ form_input('Email', 'email', user.email,erros.email) }}
+	    <button class="btn btn-success" ng-click="mostrarOuEsconderForm()">Criar novo Usuário</button>
 
-                <div class="form-group ">
-                    <label for="passwordInput" class="control-label">Senha </label>
-                    <input id="passwordInput" type="password" class="form-control" name="password" value="">
-                </div>
+	    <br />
+	    <br />
 
-                <button type="submit" class="btn btn-success">Salvar</button>
-            </form>
-		</div>
+	    <registerform ng-show="mostrarFormFlag" register="registrar" nome-label="Nome:" sobre-nome-label="Sobre nome:" endereco-label="Endereço:" email-label="Email:"></registerform>
+
+	    <table class="table">
+	        <thead>
+	        <tr>
+	            <th></th>
+	            <th>id</th>
+	            <th>Nome</th>
+	            <th>Sobre Nome</th>
+	            <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr registerlinha ng-repeat="r in registerLista" register="r"></tr>
+            </tbody>
+	    </table>
+
+
 	</div>
-</div>
+	</div>
+	</div>
+	</div>
 {% endblock %}

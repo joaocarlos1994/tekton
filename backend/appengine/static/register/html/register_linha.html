@@ -1,0 +1,12 @@
+<tr>
+                    <td><a href="{{ user.edith_path }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.sobreNome }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <form action="{{ user.delete_path }}" method="post">
+                            <button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>

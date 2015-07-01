@@ -1,0 +1,27 @@
+{% extends 'base_rh/base_rh.html' %}
+{% block selecao %}
+    {{ select_tab('REGISTER')}}
+{% endblock %}
+{% block body %}
+{% set erros = erros or None %}
+{% set vaga = empresa or None %}
+    <div class="container">
+	<div class="row">
+	<div class="col-md-12 column">
+	<div class="well">
+	    <h3>Cadastro de Vagas</h3>
+			<form action="{{ save_path }}" method="post" role="form">
+			 <select name="empresa">
+                        {% for e in lista_empresa %}
+                        <option value="{{ e.key.id() }}"> {{ e.nome }}</option>
+                        {% endfor %}
+                    </select>
+                {{ form_input('Nome:', 'nome', vaga.nome, erros.nome) }}
+                {{ form_input('Quantidade:', 'quantidade', vaga.quantidade, erros.quantidade) }}
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </form>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

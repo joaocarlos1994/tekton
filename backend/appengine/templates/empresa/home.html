@@ -1,4 +1,104 @@
 {% extends 'base_rh/base_rh.html'%}
-{% block body %}
-<h3>Empresa</h3>
+{% block js %}
+    <script type="text/javascript" src="/static/angular/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/vaga/js/vaga.js"></script>
+    <script type="text/javascript" src="/static/empresa/js/empresa.js"></script>
+
+    <script type="text/javascript">
+
+        var vagaApp = angular.module('vagaApp', ['vagaModulo']);
+        var empresaApp = angular.module('empresaApp', ['empresaModulo']);
+
+        function vagaController($scope){
+
+            $scope.mostrarFormFlagVaga=false;
+
+            $scope.mostrarOuEsconderFormVaga = function(){
+                $scope.mostrarFormFlagVaga=!$scope.mostrarFormFlagVaga;
+            }
+        }
+
+        function empresaController($scope){
+
+            $scope.mostrarFormFlagEmpresa=false;
+
+            $scope.mostrarOuEsconderFormEmpresa = function(){
+                $scope.mostrarFormFlagEmpresa=!$scope.mostrarFormFlagEmpresa;
+            }
+        }
+
+    </script>
+
 {% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+	    <div class="col-md-12 column">
+	        <div class="well">
+	            <div>
+	                <div ng-app="vagaApp" ng-controller="vagaController">
+	                    <h3>Empresa Usuário</h3>
+	                    <table>
+	                    <tr>
+	                        <th><button class="btn btn-success" ng-click="mostrarOuEsconderFormVaga()">Criar uma vaga</button></th>
+	                    </tr>
+                        </table>
+
+                        <br />
+                        <br />
+
+                        <vagaform ng-show="mostrarFormFlagVaga"></vagaform>
+	                </div>
+                </div>
+
+            <div>
+
+	        <div ng-app="empresaApp" ng-controller="empresaController">
+	            <button class="btn btn-success" ng-click="mostrarOuEsconderFormEmpresa()">Registrar Empresa</button>
+	            <empresaform ng-show="mostrarFormFlagEmpresa"></empresaform>
+            </div>
+
+        </div>
+
+	    <table>
+	        <thead>
+	        <tr>
+	            <th>id</th>
+	            <th>Nome</th>
+	            <th>CNPJ</th>
+	            <th>Endereço</th>
+	            <th>Email</th>
+            </tr>
+            </thead>
+
+            {% for empresa in empresa_lista %}
+                <tr>
+                    <td><a href="{{ empresa.edith_path }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                    <td>{{ empresa.id }}</td>
+                    <td>{{ empresa.nome }}</td>
+                    <td>{{ empresa.cnpj}}</td>
+                    <td>{{ empresa.endereco}}</td>
+                    <td>{{ empresa.email }}</td>
+                    <td>
+                        <form action="{{ empresa.delete_path }}" method="post">
+                            <button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+	    </table>
+
+
+	</div>
+</div>
+	</div>
+	</div>
+{% endblock %}
+
+
+
+
+
+
+

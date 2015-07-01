@@ -9,7 +9,7 @@
     </div>
 {% endmacro %}
 <html>
-<head lang="en">
+<head lang="pt">
     <meta charset="UTF-8">
     <title>{% block title %} RHenzo {% endblock %}</title>
 
@@ -19,8 +19,11 @@
     <script src="/static/jquery/js/jquery-1.11.1.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
+
 </head>
-    <body style="background: #FFDEAD">
+    <body style="background: #D3D3D3">
         <div id="nav_bar">
              <nav class="navbar navbar-default navbar-inverse" role="navigation">
 				<div class="navbar-header">
@@ -85,12 +88,12 @@
 
 
 						<li {{ 'class=active' if select == 'REGISTER'}}>
-							<a href="/register">Cadastra-se</a>
+							<a href="/register/home/form">Cadastra-se</a>
 						</li>
 
 
-                        <li>
-							<a href="#">Login</a>
+                        <li{{ 'class=active' if select == 'LOGIN'}}>
+							<a href="/login_rh/form">Login</a>
 						</li>
 
                         <!--

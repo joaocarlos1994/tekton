@@ -1,0 +1,43 @@
+{% extends 'base_rh/base_rh.html'%}
+{% block js %}
+    <script type="text/javascript" src="/static/angular/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/vaga/js/vaga.js"></script>
+    <script type="text/javascript" src="/static/empresa/js/empresa.js"></script>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+	    <div class="col-md-12 column">
+	        <div class="well">
+
+
+            <div>
+
+	    <table>
+	        <thead>
+	        <tr>
+	            <th>id</th>
+	            <th>Nome</th>
+	            <th>CNPJ</th>
+	            <th>Endereço</th>
+	            <th>Email</th>
+            </tr>
+            </thead>
+
+            {% for arq in arquivos %}
+               <li>
+                <a class="btn btn-primary" href="{{ arq.download_path }}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>{{ arq.filename }}
+               </li>
+            {% endfor %}
+
+	    </table>
+
+
+	    </div>
+    </div>
+    </div>
+	</div>
+	</div>
+{% endblock %}

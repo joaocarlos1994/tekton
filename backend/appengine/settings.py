@@ -14,7 +14,7 @@ from gaepermission.middleware import LoggedUserMiddleware, PermissionMiddleware
 
 APP_URL = 'https://tekton-fullstack.appspot.com'
 SENDER_EMAIL = 'renzon@gmail.com'
-DEFAULT_LOCALE = 'en_US'
+DEFAULT_LOCALE = 'pt_BR'
 DEFAULT_TIMEZONE = 'US/Eastern'
 LOCALES = ['en_US', 'pt_BR']
 TEMPLATE_404_ERROR = 'base/404.html'

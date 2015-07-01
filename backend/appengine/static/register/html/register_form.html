@@ -1,0 +1,35 @@
+<div class="well">
+	    <h3>Registro de Usuário</h3>
+
+        <div class="form-group " ng-class="{true: '', false: 'has-error'}[erros.nome ==null]">
+            <label for="nomeInput" class="control-label">{{ nomeLabel }}</label>
+            <input id="nomeInput" type="text" class="form-control" ng-model="register.nome">
+            <span class="help-block" ng-show="erros.nome">{{ erros.nome }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{true: '', false: 'has-error'}[erros.sobreNome==null]">
+            <label for="sobreNomeInput" class="control-label">{{ sobreNomeLabel }}</label>
+            <input id="sobreNomeInput" type="text" class="form-control" ng-model="register.sobreNome">
+            <span class="help-block" ng-show="erros.sobreNome">{{ erros.sobreNome }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{true: '', false: 'has-error'}[erros.endereco ==null]">
+            <label for="enderecoInput" class="control-label">{{ enderecoLabel }}</label>
+            <input id="enderecoInput" type="text" class="form-control" ng-model="register.endereco">
+            <span class="help-block" ng-show="erros.endereco">{{ erros.endereco }}</span>
+        </div>
+
+        <div class="form-group" ng-class="{true: '', false: 'has-error'}[erros.email ==null]">
+            <label for="emailInput" class="control-label">{{ emailLabel }}</label>
+            <input id="emailInput" type="text" class="form-control" ng-model="register.email">
+            <span class="help-block" ng-show="erros.email">{{ erros.email }}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordInput" class="control-label">Senha </label>
+            <input id="passwordInput" type="password" class="form-control" ng-model="register.password">
+        </div>
+
+        <button type="submit" class="btn btn-success" ng-click="salvar()" ng-hide="salvandoFlag">Salvar</button>
+        <img src="/static/img/ajax.gif" ng-show="salvandoFlag">
+</div>

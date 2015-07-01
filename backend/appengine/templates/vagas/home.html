@@ -1,0 +1,42 @@
+{% extends 'base_rh/base_rh.html' %}
+{% block selecao %}
+    {{ select_tab('REGISTER')}}
+{% endblock %}
+{% block body %}
+<h3>Empresa</h3>
+    <div class="container">
+	<div class="row">
+	<div class="col-md-12 column">
+	<div class="well">
+	    <h3>Registro de Usuário</h3>
+	    <table>
+	        <thead>
+	        <tr>
+	            <th>id</th>
+	            <th>Nome</th>
+	            <th>Quantidade</th>
+            </tr>
+            </thead>
+
+            {% for vaga in vaga_lista %}
+                <tr>
+                    <td><a href="{{ vaga.edith_path }}" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                    <td>{{ vaga.id }}</td>
+                    <td>{{ vaga.nome }}</td>
+                    <td>{{ vaga.quantidade }}</td>
+                    <td>
+                        <form action="{{ vaga.delete_path }}" method="post">
+                            <button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+
+	    </table>
+
+
+	</div>
+	</div>
+	</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base_rh/base_rh.html'%}
+{% block body %}
+{% set erros = erros or None %}
+{% set empresa = empresa or None %}
+    <div class="container">
+	<div class="row">
+	<div class="col-md-12 column">
+	<div class="well">
+	    <h3>Cadastro de Empresa</h3>
+			<form action="{{ save_path }}" method="post" role="form">
+                {{ form_input('Nome:', 'nome', empresa.nome, erros.nome) }}
+                {{ form_input('CNPJ:', 'cnpj', empresa.cnpj, erros.cnpj) }}
+                {{ form_input('Endereco', 'endereco', empresa.endereco, erros.endereco) }}
+                {{ form_input('Email', 'email', empresa.email, erros.email) }}
+
+                <div class="form-group ">
+                    <label for="passwordInput" class="control-label">Senha </label>
+                    <input id="passwordInput" type="password" class="form-control" name="password" value="">
+                </div>
+
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </form>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}
